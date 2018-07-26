@@ -1,0 +1,95 @@
+<apex:page docType="html-5.0"  standardController="ConfigurationList__c" extensions="NewConfigrationList" action="{!redirectToViewPage}" showHeader="false" >
+    <style type="text/css">
+    .mycol{width:100px;}
+    </style>
+    <apex:message />
+    <apex:form id="theForm">     
+       <apex:pageBlock >
+           <apex:pageMessages />
+           <h3>配置单</h3>
+           <br></br>
+           <br></br>
+           <apex:pageBlockSection columns="2">
+               <apex:pageBlockTable value="{!hostlists}" var="temp" width="100%">
+               <apex:column value="{!temp.Model__c}"/>
+               <apex:column headerValue="产品名称" value="{!temp.Name}"/>   
+               </apex:pageBlockTable>
+           </apex:pageBlockSection>            
+           <apex:pageBlockSection >
+               <apex:pageBlockTable value="{!ConfigurationListPage}" var="co">
+                   <apex:column value="{!co.EquipmentStandardPrice__c}"/>
+                   <apex:column value="{!co.EquipmentTotalPrice__c}"/>
+                   <apex:column value="{!co.EquipmentDiscount__c}"/>
+                   <apex:column headerValue="{!$ObjectType.ConfigurationList__c.Fields.FinalPrice__c.Label}">
+                   <apex:outputField value="{!co.FinalPrice__c}" rendered="true" />
+                   </apex:column>
+               </apex:pageBlockTable>
+           </apex:pageBlockSection>
+
+           <apex:pageBlockSection columns="1" title="主机">
+               <apex:pageBlockTable value="{!hostlists}" var="tempHost" width="100%">
+                   <apex:column styleClass="mycol" value="{!tempHost.Name}"/>
+                   <apex:column styleClass="mycol" value="{!tempHost.OriginalProductCode__c}"/>
+                   <apex:column styleClass="mycol" value="{!tempHost.NewInventoryCode__c}"/>
+                   <apex:column styleClass="mycol" value="{!tempHost.product__c}"/>
+                   <apex:column styleClass="mycol" value="{!tempHost.Model__c}"/>
+                   <apex:column style="width:500px" value="{!tempHost.Describe__c}"/>
+                   <apex:column headerValue="{!$ObjectType.Host__c.Fields.NumberTypeIN__c.Label}">
+                   <apex:outputField style="width:10px" id="field" value="{!tempHost.NumberTypeIN__c}"  rendered="true" />
+                   </apex:column>  
+                   <apex:column styleClass="mycol" value="{!tempHost.SystemStandardPricePer__c}"/>
+                   <apex:column styleClass="mycol" value="{!tempHost.SystemStandardTotalPrice__c}"/>
+                   <apex:column styleClass="mycol" value="{!tempHost.OpenQuotationUnitPrice__c}"/>
+                   <apex:column styleClass="mycol" value="{!tempHost.TotalPriceOfOpenQuotation__c}"/>
+               </apex:pageBlockTable>
+           </apex:pageBlockSection>
+           
+           <apex:pageBlockSection columns="1" title="必选配件" rendered="{!IF(configListRecordTypeName == '配置单-常规', true, false)}">
+               <apex:pageBlockTable value="{!TheRequiredAccessorieslists }" var="tempRequired" width="100%">
+                   <apex:column styleClass="mycol" value="{!tempRequired.Name}"/>
+                   <apex:column styleClass="mycol" value="{!tempRequired.OriginalInventoryCoding__c}"/>
+                   <apex:column styleClass="mycol" value="{!tempRequired.NewInventoryCoding__c}"/>
+                   <apex:column styleClass="mycol" value="{!tempRequired.product__c}"/>
+                   <apex:column styleClass="mycol" value="{!tempRequired.Model__c}"/>
+                   <apex:column style="width:500px" value="{!tempRequired.Describe__c}"/>
+                   <apex:column headerValue="{!$ObjectType.TheRequiredAccessories__c.Fields.NumberTypeIN__c.Label}">
+                <apex:outputField style="width:10px" value="{!tempRequired.NumberTypeIN__c}" rendered="true" />
+                 </apex:column>
+                   <apex:column styleClass="mycol" value="{!tempRequired.SystemStandardPricePer__c}"/>
+                   <apex:column styleClass="mycol" value="{!tempRequired.SystemStandardTotalPrice__c}"/>
+                   <apex:column styleClass="mycol" value="{!tempRequired.OpenQuotationUnitPrice__c}"/>
+                   <apex:column styleClass="mycol" value="{!tempRequired.TotalPriceOfOpen__c}"/>
+               </apex:pageBlockTable>
+           </apex:pageBlockSection>
+           
+            <apex:pageBlockSection columns="1" title="可选配件">
+               <apex:pageBlockTable value="{!OptionalAccessoriesLists}" var="tempOption" width="100%">
+                   <apex:column styleClass="mycol" value="{!tempOption.Name}"/>
+                   <apex:column styleClass="mycol" value="{!tempOption.OriginalInventoryCoding__c}"/>
+                   <apex:column styleClass="mycol" value="{!tempOption.NewInventoryCoding__c}"/>
+                   <apex:column styleClass="mycol" value="{!tempOption.ProductName__c}"/>
+                   <apex:column styleClass="mycol" value="{!tempOption.Model__c}"/>
+                   <apex:column style="width:500px" value="{!tempOption.Describe__c}"/>
+                   
+                   <apex:column styleClass="mycol" headerValue="{!$ObjectType.OptionalAccessories__c.Fields.NumberTypeIN__c.Label}">
+                   <apex:outputField style="width:10px" value="{!tempOption.NumberTypeIN__c}"  rendered="true" />
+                   </apex:column>  
+                   <apex:column styleClass="mycol" value="{!tempOption.SystemStandardPricePer__c}"/>
+                   <apex:column styleClass="mycol" value="{!tempOption.SystemStandardTotalPrice__c}"/>
+                   <apex:column styleClass="mycol" value="{!tempOption.OpenQuotationUnitPrice__c}"/>
+                   <apex:column styleClass="mycol" value="{!tempOption.gkbjdj__c}"/>
+               </apex:pageBlockTable>
+           </apex:pageBlockSection>           
+           <apex:pageBlockSection columns="1" title="可选服务">
+               <apex:pageBlockTable value="{!extendProduct}" var="extend" width="100%">
+                   <apex:column value="{!extend.Name}"/>
+                   <apex:column value="{!extend.ExtendWarrantyCode__c}"/>
+                   <apex:column headerValue="{!$ObjectType.ExtendedWarrantyProduct__c.Fields.ExtendMonth__c.Label}">
+                   <apex:outputField value="{!extend.ExtendMonth__c}" rendered="true" />
+                   </apex:column>
+                   <apex:column value="{!extend.TotalPrice__c}"/>
+               </apex:pageBlockTable>
+           </apex:pageBlockSection>         
+       </apex:pageBlock>
+</apex:form>   
+</apex:page>

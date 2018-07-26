@@ -1,0 +1,100 @@
+<apex:page standardController="CustomObject20__c" contentType="application/msword#template.doc" applyHTMLTag="true" showHeader="true" cache="true">
+    <style type="text/css">
+        body{
+            font-family: 微软雅黑 ! important; 
+            font-size : 12px ;
+        }
+        table{
+            font-family: 微软雅黑 ! important; 
+        }
+        h1{
+            font-size : 14.5px;
+        }
+        
+    </style>
+    <body>
+    <div>
+    <apex:image url="https://c.ap4.content.force.com/servlet/servlet.ImageServer?id=0156F00000DRgbu&oid=00D9000000107JA&lastMod=1531735104000" width="60" height="60"> </apex:image>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <apex:image url="https://c.ap4.content.force.com/servlet/servlet.ImageServer?id=0156F00000DRgbz&oid=00D9000000107JA&lastMod=1531735155000" width="160" height="50" > </apex:image>
+    </div>
+    <hr size="1"></hr>
+    <h1 align="center"><b>技术服务收费确认函</b></h1>
+    <div>
+    <span>客户名称：{!CustomObject20__c.Account__r.name}</span><br/>
+    <span> 尊敬的贵院，您好</span><br/>
+    <br/>
+    <span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;贵院所使用的设备：___________因故报修，经我公司专业工程师分析，故障及所需的维修详细情况如下：</span><br/>
+    <span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;保修期外的收费维修建立在双方自愿基础上，在我们为您提供服务前，请您务必了解、确认并承诺如下收费明细及回款要求，签字盖章后传真回执，我们在收到您的回执件1小时内，会与您联系并为您作具体安排。</span><br/>
+    </div>
+    <table border="1" style="width:570px;height:760px">
+    <tr>
+        <td colspan="5" align="center">收费详细列表</td>
+    </tr>
+    <tr>
+        <td>差旅费</td>
+        <td colspan="4">{!CustomObject20__c.TravelExpense__c} （元）</td> 
+    </tr>
+    <tr>
+        <td>服务费</td>
+        <td colspan="4">{!CustomObject20__c.ServiceCharge__c} （元）</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td align="center">备件名称</td>
+        <td align="center">备件数量</td>
+        <td align="center">备件单价（元）</td>
+        <td align="center">合计价格（元）</td>
+    </tr>
+    <tr>
+        <td rowspan="5">备件收费部分</td>
+        <td>&nbsp;{!CustomObject20__c.SparePartsProducts1__r.name}</td>
+        <td>{!CustomObject20__c.Amount1__c}</td>
+        <td>{!CustomObject20__c.StandardPrices1__c}</td>
+        <td>{!CustomObject20__c.TotalPrice1__c}</td>
+    </tr>
+    <tr>
+        <td>&nbsp;{!CustomObject20__c.SparePartsProducts2__r.name}</td>
+        <td>{!CustomObject20__c.Amount2__c}</td>
+        <td>{!CustomObject20__c.StandardPrices2__c}</td>
+        <td>{!CustomObject20__c.TotalPrice2__c}</td>
+    </tr>
+    <tr>
+        <td>&nbsp;{!CustomObject20__c.SparePartsProducts3__r.name}</td>
+        <td>{!CustomObject20__c.Amount3__c}</td>
+        <td>{!CustomObject20__c.StandardPrices3__c}</td>
+        <td>{!CustomObject20__c.TotalPrice3__c}</td>
+    </tr>
+    <tr>
+        <td>&nbsp;{!CustomObject20__c.SparePartsProducts4__r.name}</td>
+        <td>{!CustomObject20__c.Amount4__c}</td>
+        <td>{!CustomObject20__c.StandardPrices4__c}</td>
+        <td>{!CustomObject20__c.TotalPrice4__c}</td>
+    </tr>
+    <tr>
+        <td>&nbsp;{!CustomObject20__c.SparePartsProducts5__r.name}</td>
+        <td>{!CustomObject20__c.Amount5__c}</td>
+        <td>{!CustomObject20__c.StandardPrices5__c}</td>
+        <td>{!CustomObject20__c.TotalPrice5__c}</td>
+    </tr>
+    <tr>
+        <td>备件费用总价</td>
+        <td colspan="4">RMB（大写）{!CustomObject20__c.BJamountDX__c}元</td>
+    </tr>
+    </table>
+    <div>
+    <span>总计费用（人民币元） ：{!CustomObject20__c.FeeTotal__c} （元）&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大写 ：{!CustomObject20__c.AmountDX__c}</span><br/>
+    <br/>
+    <span><b>回款要求 ：{!CustomObject20__c.ReturnRequest__c}</b></span><br/>
+    <br/>
+    <span>如您确认无误，请签字、盖章</span><br/>
+    <br/>
+    </div>
+    <p>眼科主任：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;工程师:</p>
+    <p>设备科长：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主管/经理 :</p>
+    <p>医院公章：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;公司公章</p>
+    <p>日期：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日期:</p>
+ </body>
+
+</apex:page>

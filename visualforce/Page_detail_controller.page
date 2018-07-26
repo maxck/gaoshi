@@ -1,0 +1,97 @@
+<apex:page docType="html-5.0" Controller="Page_detail" >
+    <font size="3" color="black"> <b>  
+    用户:  {!$User.LastName} {!$User.FirstName}
+    大区：{!$User.TertiarySector__c }
+    工作日期：
+
+   <apex:outputText value="{0,date,yyyy'/'MM'/'dd}">
+    <apex:param value="{!startDateOfWeek}" /> 
+   </apex:outputText>
+    - 
+   <apex:outputText value="{0,date,yyyy'/'MM'/'dd}">
+    <apex:param value="{!endDateOfWeek}" /> 
+   </apex:outputText>
+    </b> </font>
+    
+    
+    <apex:form >
+    <apex:pageBlock >
+       
+           <apex:pageMessages id="showmsg"></apex:pageMessages>
+           <apex:panelGrid columns="2">
+               
+               输入周序号： <apex:input type="number" value="{!No}" id="input_week" required="true" />
+           
+               <apex:CommandButton value="Submit" action="{!query}" />
+            </apex:panelGrid>   
+                
+  
+        
+    </apex:pageBlock>
+</apex:form>
+    
+  
+    
+    <apex:form >     
+        <apex:pageBlock title="本周销售机会推进情况（包括签单）">
+           
+          <apex:pageBlockTable value="{!AllOpportunities}" var="oppo">
+            <apex:column headerValue="最终客户名称" value="{!oppo.endAccountName }"/>
+            <apex:column headerValue="销售机会名称" value="{!oppo.opportunityName }"/>
+            <apex:column headerValue="金额" value="{!oppo.amount }"/>
+            <apex:column headerValue="预计装机时间" value="{!oppo.TimeInstallation }"/>
+            <apex:column headerValue="说明" value="{!oppo.description  }"/>
+            <apex:column headerValue="品牌和型号" value="{!oppo.brandAndType }"/>
+          </apex:pageBlockTable>
+                
+        </apex:pageBlock>
+    </apex:form>
+    
+   <!-- <apex:form >     
+        <apex:pageBlock title="本周回款情况">
+          <apex:pageBlockTable value="{!Allzbs}" var="zb">
+            <apex:column headerValue="客户名称" value="{!zb.ClientName__c}"/>
+            <apex:column headerValue="订单号" value="{!zb.OrderID__c}"/>
+            <apex:column headerValue="订单金额" value="{!zb.OrderAmount__c}"/>
+            <apex:column headerValue="回款金额" value="{!zb.ReturnedMoney__c}"/>
+            <apex:column headerValue="剩余金额" value="{!zb.Surplus__c}"/>
+            <apex:column headerValue="逾期金额" value="{!zb.Overdue__c}"/>
+          </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>  -->
+    
+    <apex:form >     
+        <apex:pageBlock title="本周工作情况">
+          <apex:pageBlockTable value="{!AllEvents}" var="currentActivity">
+              <apex:column value="{!currentActivity.WeekDay__c}"/>
+              
+            <apex:column value="{!currentActivity.ActivityDate__c}"/>
+            <apex:column value="{!currentActivity.AccountName__c}"/>
+            <apex:column value="{!currentActivity.lxr__c}"/>
+            
+            <apex:column value="{!currentActivity.ActivityDescription__c}"/>
+            <apex:column value="{!currentActivity.NeedSupport__c}"/>
+            <apex:column value="{!currentActivity.Comment__c}"/>
+            <apex:column value="{!currentActivity.CompletionStatus__c}"/>
+            
+          </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+    
+    <apex:form >     
+        <apex:pageBlock title="下周工作计划">
+          <apex:pageBlockTable value="{!EventList2 }" var="Activity">
+          <apex:column value="{!Activity.WeekDay__c}"/>
+            <apex:column value="{!Activity.ActivityDate__c}"/>
+            <apex:column value="{!Activity.AccountName__c}"/>
+            <apex:column value="{!Activity.lxr__c}"/>
+            
+            <apex:column value="{!Activity.ActivityDescription__c}"/>
+            <apex:column value="{!Activity.NeedSupport__c}"/>
+            <apex:column value="{!Activity.Comment__c}"/>
+            <apex:column value="{!Activity.CompletionStatus__c}"/>
+            
+          </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
